@@ -242,106 +242,7 @@
             </footer>
         </div>
        <!--emertgentes-->
-       <!-- MODAL EDITAR PROVEEDOR -->
-        <div id="modalProveedor" class="modal">
-            <div class="modal-content" id="modal_actualizar_proveedor">
-                <span class="close" onclick="cerrarModal()">&times;</span>
-                <h2>Editar Proveedor</h2>
-                <form id="formEditarProveedor">
-                <div class="div1">
-                    <div>
-                    <label>Id Proveedor</label>
-                    <input class="input" id="ac_po_id" name="p_id" type="number" readonly>
-                    </div>
-                    <div>
-                    <label>Nombre</label>
-                    <input class="input" id="ac_po_nombre" name="p_nombre" type="text" required>
-                    </div>
-                    <div>
-                    <label>Apellido</label>
-                    <input class="input" id="ac_po_apellido" name="p_apellido" type="text" required>
-                    </div>
-                </div>
-                <div class="div2">
-                    <div>
-                    <label>Empresa</label>
-                    <input class="input" id="ac_po_empresa" name="p_empresa" type="text" required>
-                    </div>
-                    <div>
-                    <label>Teléfono</label>
-                    <input class="input" id="ac_po_telefono" name="p_telefono" type="text" required>
-                    </div>
-                    <div>
-                    <label>Correo</label>
-                    <input class="input" id="ac_po_correo" name="correo" type="email" required>
-                    </div>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit">Actualizar</button>
-                    <button type="button" onclick="cerrarModal()">Cerrar</button>
-                </div>
-                </form>
-            </div>
-        </div>
-        <!--Modal para eliminar-->
-        <div id="modalEliminarProveedor" class="modal">
-            <div class="modal-content">
-                <h3>¿Estás seguro de que deseas eliminar este proveedor?</h3>
-                <button id="modalEliminarProveedor"  onclick="eliminarProvee()" class="btn-confirmar">Sí</button>
-                <button id="modalEliminarProveedor"  onclick="cerrarModalEliProv()" class="btn-cancelar">No</button>
-            </div>
-        </div>
-        
-        <!-- MODAL EDITAR ClIENTE -->
-        <div id="modalCliente" class="modal">
-            <div class="modal-content" id="modal_actualizar_cliente">
-                <span class="close" onclick="cerrarModalcli()">&times;</span>
-                <h2>Editar Cliente</h2>
-                <form id="formEditarCliente">
-                <div class="div1">
-                    <div>
-                    <label>Id cliente</label>
-                    <input class="input" id="Mcl_id" name="c_id" type="number" readonly>
-                    </div>
-                    <div>
-                    <label>Nombre</label>
-                    <input class="input" id="Mcl_nombre" name="c_nombre" type="text" required>
-                    </div>
-                    <div>
-                    <label>Apellido</label>
-                    <input class="input" id="Mcl_apellido" name="c_apellido" type="text" required>
-                    </div>
-                </div>
-                <div class="div2">
-                    <div>
-                    <label>Direccion</label>
-                    <input class="input" id="Mcl_direccion" name="c_direccion" type="text" required>
-                    </div>
-                    <div>
-                    <label>Teléfono</label>
-                    <input class="input" id="Mcl_telefono" name="c_telefono" type="text" required>
-                    </div>
-                    <div>
-                    <label>Correo</label>
-                    <input class="input" id="Mcl_correo" name="c_correo" type="email" required>
-                    </div>
-                </div>
-                <div class="modal-buttons">
-                    <button type="submit">Actualizar</button>
-                    <button type="button" onclick="cerrarModalcli()">Cerrar</button>
-                </div>
-                </form>
-            </div>
-        </div>
-
-        <!--Modal para eliminar-->
-        <div id="modalEliminarCliente" class="modal">
-            <div class="modal-content">
-                <h3>¿Estás seguro de que deseas eliminar este cliente?</h3>
-                <button id="confirmarEliminarcli"  onclick="eliminarClien()" class="btn-confirmar">Sí</button>
-                <button id="cancelarEliminarcli"  onclick="cerrarModalEliClie()" class="btn-cancelar">No</button>
-            </div>
-        </div>
+ 
 
         <!--Modal para productos-->
 
@@ -544,9 +445,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
     <script src="js/navegacion.js" type="module"></script>
-    <script src="js/proveedores.js " type="module" ></script>
     <script src="js/inventario.js" type="module" ></script>
-    <script src="js/clientes.js" type="module" ></script>
     <script src="js/productos.js" type="module"></script>
     <script src="js/ventas.js" type="module"></script>
     <script src="js/usuarios.js" type="module"></script>
@@ -554,28 +453,17 @@
 
    
   <script type="module">
-    import { eliminarProvee, abrirModalEliProv, cerrarModalEliProv, cerrarModal } from './js/proveedores.js';
-    import { eliminarClien, abrirModalEliClie, cerrarModalEliClie, cerrarModalcli } from './js/clientes.js';
     import { eliminarProducto, cerrarModalProd, abrirModalEliProd, cerrarModalEliProd } from './js/productos.js';
     import { eliminarVenta, cerrarModalVenta, abrirModalEliVenta, cerrarModalEliVenta } from './js/ventas.js';
     import { eliminarUsu, cerrarModalUsu, abrirModalEliUsu, cerrarModalEliUsu } from './js/usuarios.js';
 
     // Exponer funciones al window para que se puedan usar desde onclick
-    window.eliminarProvee = eliminarProvee;
     window.abrirModalEliProv = abrirModalEliProv;
     window.cerrarModalEliProv = cerrarModalEliProv;
     window.cerrarModal = cerrarModal;
 
-    window.eliminarClien = eliminarClien;
-    window.abrirModalEliClie = abrirModalEliClie;
-    window.cerrarModalEliClie = cerrarModalEliClie;
-    window.cerrarModalcli = cerrarModalcli;
 
     window.eliminarProducto = eliminarProducto;
-    window.abrirModalEliProd = abrirModalEliProd;
-    window.cerrarModalEliProd = cerrarModalEliProd;
-    window.cerrarModalProd = cerrarModalProd;
-
     window.eliminarVenta = eliminarVenta;
     window.abrirModalEliVenta = abrirModalEliVenta;
     window.cerrarModalEliVenta = cerrarModalEliVenta;

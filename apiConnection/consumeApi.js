@@ -85,53 +85,6 @@ export const eliminarUsuarios = async (idusuario) => {
 
 
 
-//clientes
-export const insertarClientes = async (nuevoCliente) => {
-    try {
-        const respuesta = await fetch("https://apiropashop.onrender.com/api/clientes", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(nuevoCliente)
-        });
-
-        const resultado = await respuesta.json();
-        return resultado;
-    } catch (error) {
-        console.error("Error al insertar cliente", error);
-    }
-};
-
-export const actualizarClientes = async (clienteActualizado) => {
-    try {
-        const respuesta = await fetch(`https://apiropashop.onrender.com/api/clientes/${clienteActualizado.c_id_cliente}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(clienteActualizado)
-        });
-
-        const resultado = await respuesta.json();
-        return resultado;
-    } catch (error) {
-        console.error("Error al actualizar cliente:", error);
-    }
-};
-export const eliminarClientes = async (idCliente) => {
-    try {
-        const respuesta = await fetch(`https://apiropashop.onrender.com/api/clientes/${idCliente}`, {
-            method: "DELETE"
-        });
-
-        const resultado = await respuesta.json();
-        return resultado;
-    } catch (error) {
-        console.error("Error al eliminar cliente:", error);
-    }
-};
-
 
 //ventas
 export const insertarVentas = async (nuevoVenta) => {
