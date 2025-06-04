@@ -6,7 +6,7 @@ const formRegistroVenta = document.getElementById("formularioVentas");
 
 formRegistroVenta.addEventListener("submit", async function (e) {
     e.preventDefault();
-    let producto_id = document.getElementById('v_idzapato').value;
+    let producto_id = document.getElementById('v_idropa').value;
     let cliente_id = document.getElementById('v_idcliente').value;
     let ciudad =  document.getElementById('v_ciudad').value;
     let cantidadProducto = document.getElementById('v_cantidad').value;
@@ -140,7 +140,7 @@ formRegistroVenta.addEventListener("submit", async function (e) {
     }
 
     function limpiarFormulario() {
-        document.getElementById('v_idzapato').value = '';
+        document.getElementById('v_idropa').value = '';
         document.getElementById('v_idcliente').value = '';
         document.getElementById('v_Estado_Pago').value = '';
         document.getElementById('v_cantidad').value = '';
@@ -207,7 +207,7 @@ export async function actualizarVenta(idventa){
     for (const venta of ventas) {
         if (venta.v_id_venta == idventa) {
             document.getElementById('Mid_venta').value = venta.v_id_venta;
-            document.getElementById('Mid_zapato').value = venta.v_id_producto;
+            document.getElementById('Mid_ropa').value = venta.v_id_producto;
             document.getElementById('Mpid_cliente').value = venta.v_id_cliente;
             document.getElementById('MEstadoP').value = venta.v_estado_pago;
             document.getElementById('MpCantidad').value = venta.v_cantidad;
@@ -238,7 +238,7 @@ const modalActualizarVenta = document.getElementById("modal_actualizar_venta");
 modalActualizarVenta.addEventListener("submit", async function (e) {
     e.preventDefault();   
     let idcliente = document.getElementById('Mpid_cliente').value;
-    let idproducto = document.getElementById('Mid_zapato').value;
+    let idproducto = document.getElementById('Mid_ropa').value;
     let nuevaCantidad = document.getElementById('MpCantidad').value;
     let ciudad =  document.getElementById('Mventa_ciudad').value;
     let idventa = document.getElementById('Mid_venta').value;

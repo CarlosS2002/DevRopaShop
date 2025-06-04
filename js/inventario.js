@@ -1,6 +1,4 @@
-import { obtainProductos,obtainVentas,obtainProveedores,obtainClientes, obtainUsuarios } from "../apiConnection/consumeApi.js";
-import {actualizarProveedor,  abrirModalEliProv } from '../js/proveedores.js';
-import {actualizarClient,abrirModalEliClie} from '../js/clientes.js';
+import { obtainProductos,obtainVentas, obtainUsuarios } from "../apiConnection/consumeApi.js";
 import {actualizarProducto,abrirModalEliProd} from '../js/productos.js';
 import {actualizarVenta,abrirModalEliVenta} from '../js/ventas.js';
 import {actualizarUsuario,abrirModalEliUsu} from '../js/usuarios.js';
@@ -73,8 +71,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   getProductos();
   getVentas();
   getProveedores();
-  getClientes();
-  cargarProveedores();
   getUsuarios();
 });
 
@@ -199,74 +195,8 @@ export async function getVentas(){
         });
     })
 }  
-export async function getProveedores(){
-    const proveedoresObtained = await obtainProveedores();
-    const container = document.querySelector('#contentCard')
-    proveedoresObtained.forEach((provee)=>{
-        const {p_id_proveedor   ,p_nombre_proveedor ,p_apellido_proveedor ,p_empresa,p_telefono,p_correo} = provee
-        const proveeHTML = document.createElement('p');
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `
-           
-            <div class="card-content">
-                <h3>ID: ${p_id_proveedor}</h3>
-                <ul class="card-details">
-                    <li><span>Nombre:</span> ${p_nombre_proveedor}</li>
-                    <li><span>Apellido:</span> ${p_apellido_proveedor}</li>
-                    <li><span>Empresa:</span> ${p_empresa}</li>
-                    <li><span>Teléfono:</span> ${p_telefono}</li>
-                    <li><span>Correo:</span> ${p_correo}</li>
-                </ul>
-                <div class="card-actions">
-                    <button class="edit-btn" data-id="${p_id_proveedor}" >Editar</button>
-                    <button class="delete-btn" data-id="${p_id_proveedor}">Eliminar</button>
-                </div>
-            </div>
-        `;
-        container.appendChild(card);
-        card.querySelector('.edit-btn').addEventListener('click', function() {
-            actualizarProveedor(p_id_proveedor);
-        });
-        card.querySelector('.delete-btn').addEventListener('click', function() {
-            abrirModalEliProv(p_id_proveedor);
-        });
-    });
-}
-async function getClientes(){
-    const clientesObtained = await obtainClientes();
-    const container = document.querySelector('#contentCardc')
-    clientesObtained.forEach((cliente)=>{
-        const {c_id_cliente ,c_nombre_cliente ,c_apellido_cliente ,c_direccion,c_telefono,c_correo} = cliente
-        const clienteHTML = document.createElement('p');
-        const card = document.createElement('div');
-        card.classList.add('card');
-        card.innerHTML = `
-            
-            <div class="card-content">
-                <h3>ID: ${c_id_cliente }</h3>
-                <ul class="card-details">
-                    <li><span>Nombre:</span> ${c_nombre_cliente}</li>
-                    <li><span>Apellido:</span> ${c_apellido_cliente}</li>
-                    <li><span>Direccion:</span> ${c_direccion}</li>
-                    <li><span>Teléfono:</span> ${c_telefono}</li>
-                    <li><span>Correo:</span> ${c_correo}</li>
-                </ul>
-                <div class="card-actions">
-                    <button class="edit-btn" data-id="${c_id_cliente}">Editar</button>
-                    <button class="delete-btn" data-id="${c_id_cliente}">Eliminar</button>
-                </div>
-            </div>
-        `;
-        container.appendChild(card);
-        card.querySelector('.edit-btn').addEventListener('click', function() {
-            actualizarClient(c_id_cliente);
-        });
-        card.querySelector('.delete-btn').addEventListener('click', function() {
-            abrirModalEliClie(c_id_cliente);
-        });
-    });
-}
+
+
 async function getUsuarios() {
   const usariosObtained = await obtainUsuarios();
   const container = document.querySelector('#contentCardU');
