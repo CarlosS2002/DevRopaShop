@@ -70,7 +70,6 @@ modalActualizarUsu.addEventListener("submit", async function (e) {
     }
 
 });
-//eliminar proveedor
 export async function eliminarUsu(){
     let idUsu= usuarioEliminar;
     let encontrado = false;

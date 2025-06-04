@@ -246,31 +246,4 @@ async function getUsuarios() {
 
 
 
-let listaProveedores = [];
-
-
-async function cargarProveedores() {
-    listaProveedores = await obtainProveedores(); 
-    const datalist = document.getElementById('lista_proveedores');
-    datalist.innerHTML = '';
-
-    listaProveedores.forEach(proveedor => {
-        const option = document.createElement('option');
-        option.value = `${proveedor.p_id_proveedor} - ${proveedor.p_nombre_proveedor}`;
-        datalist.appendChild(option);
-    });
-}
-document.getElementById('i_id_proveedor').addEventListener('change', () => {
-    const input = document.getElementById('i_id_proveedor');
-    const valorIngresado = input.value;
-    const proveedorEncontrado = listaProveedores.find(p => 
-        `${p.p_id_proveedor} - ${p.p_nombre_proveedor}` === valorIngresado
-    );
-
-    if (proveedorEncontrado) {
-        input.value = proveedorEncontrado.p_id_proveedor;
-    }
-});
-
-
 
