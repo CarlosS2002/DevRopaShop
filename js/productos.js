@@ -6,29 +6,8 @@ const formRegistro = document.getElementById("formularioProductos");
 
 formRegistro.addEventListener("submit", async function (e) {
     e.preventDefault();
-    let p_id = document.getElementById('i_id_proveedor').value;
     let cantidadProducto = document.getElementById('i_cantidad').value;
 
-
-        let proveedorExiste = false;
-
-        for (const proveedor of listaproveedores) {
-            if (`${proveedor.p_id_proveedor}` === p_id) {
-                proveedorExiste = true;
-                break;
-            }
-        }
-
-        if (!proveedorExiste) {
-            Swal.fire({
-                icon: 'error',
-                title: 'No existe un proveedor con este ID',
-                text: 'Verifica tus datos e intenta nuevamente.',
-                confirmButtonText: 'Reintentar',
-                confirmButtonColor: '#3085d6'
-            });
-            return;
-        }
          if (cantidadProducto <= 0) {    
             Swal.fire({
                 icon: 'error',
@@ -40,10 +19,9 @@ formRegistro.addEventListener("submit", async function (e) {
             return;
         }
 
-   //p_id_producto  ,p_color,p_id_proveedor ,p_cantidad,p_talla,p_marca,p_descripcion,p_precio
     const nuevoProducto = {
         p_color: document.getElementById('i_color').value,
-        p_id_proveedor:p_id,
+        p_id_proveedor: document.getElementById('Mpr_proveedor').value,
         p_cantidad: cantidadProducto,
         p_talla: document.getElementById('i_talla').value,
         p_marca: document.getElementById('i_marca').value,
@@ -89,7 +67,7 @@ formRegistro.addEventListener("submit", async function (e) {
     }
 });
 
-   //p_id_producto  ,p_color,p_id_proveedor ,p_cantidad,p_talla,p_marca,p_descripcion,p_precio
+
 
 export async function actualizarProducto(idproducto){
     abrirModalProd(); 
@@ -122,30 +100,11 @@ const modalActualizarProducto = document.getElementById("modal_actualizar_produc
 
 modalActualizarProducto.addEventListener("submit", async function (e) {
     e.preventDefault();   
-    let idproveedor = document.getElementById('Mpr_proveedor').value;
-        let proveedorExiste = false;
-        for (const proveedor of listaproveedores) {
-            if (`${proveedor.p_id_proveedor}` == idproveedor) {
-                proveedorExiste = true;
-                break;
-            }
-        }
-
-        if (!proveedorExiste) {
-            Swal.fire({
-                icon: 'error',
-                title: 'No existe un proveedor con este ID',
-                text: 'Verifica tus datos e intenta nuevamente.',
-                confirmButtonText: 'Reintentar',
-                confirmButtonColor: '#3085d6'
-            });
-            return;
-        }
 
     const productoActualizado = {
         p_id_producto: document.getElementById('Mpr_id').value,
         p_color: document.getElementById('Mpr_color').value,
-        p_id_proveedor:idproveedor,
+        p_id_proveedor: document.getElementById('Mpr_proveedor').value,
         p_cantidad: document.getElementById('Mpr_cantidad').value,
         p_talla: document.getElementById('Mpr_talla').value,
         p_marca: document.getElementById('Mpr_marca').value,
@@ -153,7 +112,7 @@ modalActualizarProducto.addEventListener("submit", async function (e) {
         p_precio: document.getElementById('Mpr_precio').value,
 
     };
-  //p_id_producto  ,p_color,p_id_proveedor ,p_cantidad,p_talla,p_marca,p_descripcion,p_precio 
+
     const resultado = await actualizarProductos(productoActualizado);
 
     if (resultado) {
@@ -179,7 +138,6 @@ modalActualizarProducto.addEventListener("submit", async function (e) {
     }
 
 });
-//eliminar proveedor
 export async function eliminarProducto(){
     let idproducto= productoaeliminar;
 
