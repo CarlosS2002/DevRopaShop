@@ -12,7 +12,7 @@ body {
 }
 
 header {
-    background: rgba(0, 0, 0, 0.7); /* Fondo más oscuro para el encabezado */
+    background: #ff9800; /* Naranja sólido para el encabezado */
     padding: 20px;
     display: flex;
     justify-content: center;
