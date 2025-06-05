@@ -1,5 +1,5 @@
 
-import { insertarProducto,actualizarProductos,eliminarProductos,obtainProveedores,obtainVentas,obtainProductos } from "../apiConnection/consumeApi.js";
+import { insertarProducto,actualizarProductos,eliminarProductos,obtainVentas,obtainProductos } from "../apiConnection/consumeApi.js";
 
 
 const formRegistro = document.getElementById("formularioProductos");
@@ -8,7 +8,7 @@ formRegistro.addEventListener("submit", async function (e) {
     e.preventDefault();
     let p_id = document.getElementById('i_id_proveedor').value;
     let cantidadProducto = document.getElementById('i_cantidad').value;
-    const listaproveedores = await obtainProveedores();
+
 
         let proveedorExiste = false;
 
@@ -123,7 +123,6 @@ const modalActualizarProducto = document.getElementById("modal_actualizar_produc
 modalActualizarProducto.addEventListener("submit", async function (e) {
     e.preventDefault();   
     let idproveedor = document.getElementById('Mpr_proveedor').value;
-    const listaproveedores = await obtainProveedores();
         let proveedorExiste = false;
         for (const proveedor of listaproveedores) {
             if (`${proveedor.p_id_proveedor}` == idproveedor) {
