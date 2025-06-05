@@ -1,5 +1,5 @@
 
-import { insertarVentas,actualizarVentas,eliminarVentas,actualizarProductos, obtainVentas,obtainClientes, obtainProductos } from "../apiConnection/consumeApi.js";
+import { insertarVentas,actualizarVentas,eliminarVentas,actualizarProductos, obtainVentas, obtainProductos } from "../apiConnection/consumeApi.js";
 
   
 const formRegistroVenta = document.getElementById("formularioVentas");
@@ -10,39 +10,17 @@ formRegistroVenta.addEventListener("submit", async function (e) {
     let cliente_id = document.getElementById('v_idcliente').value;
     let ciudad =  document.getElementById('v_ciudad').value;
     let cantidadProducto = document.getElementById('v_cantidad').value;
-
+    if (cantidadProducto <= 0) {    
+    Swal.fire({
+        icon: 'error',
+        title: 'La cantidad debe ser mayor a 0',
+        text: 'Verifica tus datos e intenta nuevamente.',
+        confirmButtonText: 'Reintentar',
+        confirmButtonColor: '#3085d6'
+    });
+    return;
+}
  
-    const listaClientes = await obtainClientes();
-
-        let clienteExiste = false;
-        //c_id_cliente,c_nombre_cliente,c_apellido_cliente,c_direccion,c_telefono,c_correo
-        for (const cliente of listaClientes) {
-            if (`${cliente.c_id_cliente}` == cliente_id) {
-                clienteExiste = true;
-                break;
-            }
-        }
-
-        if (!clienteExiste) {
-            Swal.fire({
-                icon: 'error',
-                title: 'No existe un cliente con este ID',
-                text: 'Verifica tus datos e intenta nuevamente.',
-                confirmButtonText: 'Reintentar',
-                confirmButtonColor: '#3085d6'
-            });
-            return;
-        }
-        if (cantidadProducto <= 0) {    
-            Swal.fire({
-                icon: 'error',
-                title: 'La cantidad debe ser mayor a 0',
-                text: 'Verifica tus datos e intenta nuevamente.',
-                confirmButtonText: 'Reintentar',
-                confirmButtonColor: '#3085d6'
-            });
-            return;
-        }
      const listaproductos = await obtainProductos();
 
         let productoExiste = false;
@@ -242,7 +220,6 @@ modalActualizarVenta.addEventListener("submit", async function (e) {
     let nuevaCantidad = document.getElementById('MpCantidad').value;
     let ciudad =  document.getElementById('Mventa_ciudad').value;
     let idventa = document.getElementById('Mid_venta').value;
-    const listaClientes = await obtainClientes();
     const listaproductos = await obtainProductos();
 
     let clienteExiste = false;

@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const tipoAcceso = localStorage.getItem("tipoacceso");
 
   if (tipoAcceso === "Usuario") {
-    const botonVentas = document.querySelector('button[data-number="6"]');
+    const botonVentas = document.querySelector('button[data-number="4"]');
     if (botonVentas) botonVentas.remove();
   }
 
