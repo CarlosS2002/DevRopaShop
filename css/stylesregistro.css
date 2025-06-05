@@ -29,7 +29,7 @@ header img {
 header h2 {
     font-size: 24px;
     font-weight: bold;
-    color: #f8b400; /* Amarillo dorado para un toque elegante */
+    color: #0074D9; /* Azul brillante */
 }
 
 /* Estilos del formulario */
@@ -64,12 +64,12 @@ form input {
 }
 
 form input:focus {
-    border-color: #f8b400; /* Amarillo dorado al enfocar */
+    border-color: #0074D9; /* Azul brillante al enfocar */
     outline: none;
 }
 
 button {
-    background-color: #f8b400; /* Amarillo dorado para el botón */
+    background-color: #0074D9; /* Azul brillante para el botón */
     color: white;
     border: none;
     padding: 15px 20px;
@@ -81,7 +81,7 @@ button {
 }
 
 button:hover {
-    background-color: #e68900; /* Amarillo más oscuro al pasar el mouse */
+    background-color: #005fa3; /* Azul más oscuro al pasar el mouse */
 }
 
 @media (max-width: 768px) {
