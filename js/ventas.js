@@ -1,4 +1,3 @@
-
 import { insertarVentas,actualizarVentas,eliminarVentas,actualizarProductos, obtainVentas, obtainProductos } from "../apiConnection/consumeApi.js";
 
   
@@ -233,7 +232,9 @@ modalActualizarVenta.addEventListener("submit", async function (e) {
                 break;
             }
         }
-        let diferencia = parseInt(nuevaCantidad) - parseInt(cantidadRealVenta);
+        let cantidadRealVenta = document.getElementById('MpCantidad').getAttribute('data-original-cantidad') || document.getElementById('MpCantidad').defaultValue || 0;
+cantidadRealVenta = parseInt(cantidadRealVenta);
+let diferencia = parseInt(nuevaCantidad) - cantidadRealVenta;
         if (nuevaCantidad <= 0) {    
             Swal.fire({
                 icon: 'error',
