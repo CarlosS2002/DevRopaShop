@@ -222,32 +222,6 @@ modalActualizarVenta.addEventListener("submit", async function (e) {
     let idventa = document.getElementById('Mid_venta').value;
     const listaproductos = await obtainProductos();
 
-    let clienteExiste = false;
-        for (const cliente of listaClientes) {
-            if (`${cliente.c_id_cliente}` == idcliente) {
-                clienteExiste = true;
-                break;
-            }
-        }
-        let cantidadRealVenta;
-        const listaVentas = await obtainVentas();
-         for (const venta of listaVentas) {
-            if (`${venta.v_id_venta}` == idventa) {
-                cantidadRealVenta = venta.v_cantidad;
-                break;
-            }
-        }
-
-        if (!clienteExiste) {
-            Swal.fire({
-                icon: 'error',
-                title: 'No existe un cliente con este ID',
-                text: 'Verifica tus datos e intenta nuevamente.',
-                confirmButtonText: 'Reintentar',
-                confirmButtonColor: '#3085d6'
-            });
-            return;
-        }
         let total ;
         let precioProducto = 0;
         let cantidadProductoreal = 0;
