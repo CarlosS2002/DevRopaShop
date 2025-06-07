@@ -7,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (!formRegistro) {
     console.error("❌ No se encontró el formulario con id 'registroForm'");
+    return; 
   } else {
     console.log("✅ Formulario encontrado correctamente");
   }
